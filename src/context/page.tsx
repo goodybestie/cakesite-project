@@ -1,5 +1,5 @@
 'use client'
-import {createContext, useContext, useState, ReactNode} from 'react'
+import {createContext, useContext, useState, ReactNode, useEffect} from 'react'
 import {cartItem, cartContextType} from '@/const/cart'
 
 const CartContext  = createContext<cartContextType | null>(null)
@@ -16,6 +16,7 @@ const CartContext  = createContext<cartContextType | null>(null)
 export const CartProvider = ({children}: {children: ReactNode}) => {
 
     const [cartItems, setCartItems] = useState<cartItem[]>([])
+    const [isLoading, setIsLoading] = useState(false) // [isLoading, setIsLoading]
     const addToCart = (item: cartItem) => {
         setCartItems((prevItems) => {
             const existingItem = prevItems.find((i) => i.id === item.id);
@@ -30,14 +31,31 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
             return [...prevItems, {...item, quantity: item.quantity || 1}];
 
         })
+    }
 
-
+useEffect(() => {
+    if (isLoading){
+        localStorage.setItem("cartItems", JSON.stringify(cartItems))
 
     }
+}, [cartItems, isLoading])
+
+useEffect(() => {
+    const storedItems = localStorage.getItem('cartItems');
+    if(storedItems){
+         setCartItems(JSON.parse(storedItems))
+    }
+    setIsLoading(true);
+},[])
+
+    /**
+     * Increases the quantity of an item in the cart by 1.
+     * @param {string} id - The id of the item to increase.
+     */
     const increaseQty = (id: string) => {
         setCartItems((prevItems) => {
             return prevItems.map((item) =>
-            item.id === item.id
+            item.id === id
                 ?{...item, quantity: item.quantity + 1}
                 : item
             )
@@ -73,7 +91,6 @@ export const CartProvider = ({children}: {children: ReactNode}) => {
     const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0)
 
     const isInCart = (id: string) => cartItems.some((item) => item.id === id);
-
 
     
 

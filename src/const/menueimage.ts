@@ -5,6 +5,7 @@
   description: string;
   price: number;
   id: string;
+  quantity:number;
 }
 
 export const menuImages: MenuProps[] = [
@@ -14,7 +15,8 @@ export const menuImages: MenuProps[] = [
     name: "Chocolate Truffle",
     description: "Rich and moist chocolate cake topped with creamy frosting.",
     price: 25,
-    category: "Chocolate"
+    category: "Chocolate",
+    quantity:1
   },
   {
     id:'2',
@@ -22,7 +24,8 @@ export const menuImages: MenuProps[] = [
     description: "Rich dark chocolate cake with silky ganache and fresh berries. Perfect for chocolate lovers.",
     price: 45,
     image: "/images/chocolate-cake-OgXwrX5W.jpg",
-    category: "Chocolate"
+    category: "Chocolate",
+    quantity:1
   },
   {
     id:'3',
@@ -30,7 +33,8 @@ export const menuImages: MenuProps[] = [
     name: "Vanilla Wedding Cake",
     description: "Elegant vanilla cake perfect for weddings and special events.",
     price: 40,
-    category: "Wedding"
+    category: "Wedding",
+    quantity:1
   },
   {
     id:'4',
@@ -38,7 +42,8 @@ export const menuImages: MenuProps[] = [
     name: "Red Velvet Cake",
     description: "Classic red velvet cake with smooth cream cheese frosting.",
     price: 30,
-    category: "Birthday"
+    category: "Birthday",
+    quantity:1
   },
   {
     id: "5",
@@ -46,7 +51,8 @@ export const menuImages: MenuProps[] = [
     description: "Light sponge cake layered with fresh strawberries and whipped cream.",
     price: 40,
     image: '/images/strawberry-cake.jpg',
-    category: "fruit"
+    category: "fruit",
+    quantity:1
   },
   
   
@@ -56,7 +62,8 @@ export const menuImages: MenuProps[] = [
     description: "Assorted flavors: chocolate, vanilla, strawberry, and lemon with beautiful decorations.",
     price: 25,
     image: '/images/cupcakes.jpg',
-    category: "cupcakes"
+    category: "cupcakes",
+    quantity:1
   },
   {
     id: "7",
@@ -64,7 +71,7 @@ export const menuImages: MenuProps[] = [
     description: "Colorful rainbow layers with vanilla buttercream and festive sprinkles.",
     price: 50,
     image: '/images/rainbow-cake.jpg',
-    
+    quantity:1,
     category: "specialty"
   }
 ];

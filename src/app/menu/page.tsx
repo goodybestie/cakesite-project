@@ -3,7 +3,7 @@
 import React, { useContext, useState } from "react";
 import BackButton from "@/app/backbutton/page";
 import { menuImages } from "@/const/menueimage";
-import { FiSearch } from "react-icons/fi";
+import { FiSearch, FiHeart } from "react-icons/fi";
 import { div } from "framer-motion/client";
 import { useCart } from "@/context/page";
 
@@ -15,6 +15,7 @@ export default function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [viewmode, setViewMode] = useState('grid');
   const [searchItem, setSearchItem] = useState('');
+  const [isLiked, setIsLiked] = useState(false)
 
   
   const filteredMenu = menuImages.filter((item) => {
@@ -176,7 +177,14 @@ export default function MenuPage() {
 
                 {/* Favorite Icon */}
                 <button className="absolute top-3 right-3 bg-white rounded-full p-2 shadow hover:scale-105 transition">
-                  ❤️
+                
+                    {
+                      isLiked ? (
+                         <FiHeart className="text-red-400" onClick={() => setIsLiked(false)} />
+                      ):(
+                        <FiHeart className="text-gray-400" onClick={() => setIsLiked(true)} />
+                      )
+                    }
                 </button>
               </div>
 
@@ -248,7 +256,7 @@ export default function MenuPage() {
 
                   {/* Favorite Icon */}
                   <button className="absolute top-3 right-3 bg-white rounded-full p-2 shadow hover:scale-105 transition">
-                    ❤️
+                    <FiHeart />
                   </button>
                 </div>
 
