@@ -4,6 +4,7 @@ export interface cartItem{
     quantity: number;
     price: number;
     image?: string;
+    isLiked: boolean;
 }
 
 export interface cartContextType {
@@ -16,4 +17,7 @@ export interface cartContextType {
     isInCart: (id: string) => boolean;
     clearCart: () => void;
     cartTotal: number;
+    toggleLiked: (id:string) => void;
+    isLiked: (id: string) => boolean
+
   }

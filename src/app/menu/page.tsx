@@ -15,7 +15,7 @@ export default function MenuPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [viewmode, setViewMode] = useState('grid');
   const [searchItem, setSearchItem] = useState('');
-  const [isLiked, setIsLiked] = useState(false)
+  // const [isLiked, setIsLiked] = useState(false)
 
   
   const filteredMenu = menuImages.filter((item) => {
@@ -28,7 +28,7 @@ export default function MenuPage() {
   
     return matchCategory && matchSearch
   })
-    const {addToCart, isInCart}  = useCart()
+    const {addToCart, isInCart, toggleLiked, isLiked }  = useCart()
 
     
 //   if (e.key === 'Enter') {
@@ -176,15 +176,20 @@ export default function MenuPage() {
                 </span>
 
                 {/* Favorite Icon */}
-                <button className="absolute top-3 right-3 bg-white rounded-full p-2 shadow hover:scale-105 transition">
+                <button className="absolute top-3 right-3
+                 bg-white rounded-full p-2 cursor-pointer shadow hover:scale-105 transition
+                 " onClick={() => toggleLiked(item.id)}>
                 
-                    {
-                      isLiked ? (
-                         <FiHeart className="text-red-400" onClick={() => setIsLiked(false)} />
-                      ):(
-                        <FiHeart className="text-gray-400" onClick={() => setIsLiked(true)} />
-                      )
-                    }
+                    
+
+                    
+
+                  
+                       <FiHeart className={ isLiked(item.id) ? "text-red-500" : "text-gray-400" } />
+                    
+                    
+
+                   
                 </button>
               </div>
 
@@ -221,7 +226,8 @@ export default function MenuPage() {
                           image:item.image,
                           name: item.name,
                           price: item.price,
-                          quantity: 1
+                          quantity: 1,
+                          isLiked:false
                         })}
                         >
                           {isInCart(item.id) ? 'In Cart' : ' Add to Cart'}
@@ -255,8 +261,9 @@ export default function MenuPage() {
                   </span>
 
                   {/* Favorite Icon */}
-                  <button className="absolute top-3 right-3 bg-white rounded-full p-2 shadow hover:scale-105 transition">
-                    <FiHeart />
+                  <button className="absolute top-3 cursor-pointer right-3 bg-white rounded-full
+                   p-2 shadow hover:scale-105 transition" onClick={() => toggleLiked(item.id)}>
+                    <FiHeart className={isLiked(item.id) ? "text-red-500" : "text-gray-400"} />
                   </button>
                 </div>
 
@@ -285,11 +292,11 @@ export default function MenuPage() {
                           id: item.id, 
                           name: item.name,
                           price: item.price,
-                          quantity: 1
+                          quantity: 1,
+                          isLiked: false,
                         })}
                         >
                           {isInCart(item.id) ? 'In Cart' : 'Add to Cart'}
-                        Add to Cart
                       </button>
                     </div>
                   </div>

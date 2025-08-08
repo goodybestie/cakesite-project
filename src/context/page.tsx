@@ -65,7 +65,7 @@ useEffect(() => {
     const decreaseQty = (id: string) => {
         setCartItems((prevItems) => {
             return prevItems.map((item) =>
-            item.id === item.id
+            item.id === id
                 ?{...item, quantity: Math.max(1, item.quantity - 1 ) }
                 : item
             )
@@ -92,6 +92,22 @@ useEffect(() => {
 
     const isInCart = (id: string) => cartItems.some((item) => item.id === id);
 
+    const toggleLiked = (id: string) => {
+    setCartItems((prevItems) =>
+        prevItems.map((item) =>
+            item.id === id
+                ? { ...item, isLiked: !item.isLiked }
+                : item
+        )
+    );
+};
+
+
+    const isLiked = (id: string) => {
+        const item = cartItems.find((item) => item.id === id)
+        return item?.isLiked ?? false; 
+    }
+
     
 
  return(
@@ -106,6 +122,10 @@ useEffect(() => {
                 cartTotal,
                 cartCount,
                 isInCart,
+                toggleLiked,
+                isLiked,
+                
+               
             }}
         
         >

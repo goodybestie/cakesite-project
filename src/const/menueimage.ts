@@ -6,6 +6,7 @@
   price: number;
   id: string;
   quantity:number;
+  isLiked:boolean;
 }
 
 export const menuImages: MenuProps[] = [
@@ -16,7 +17,9 @@ export const menuImages: MenuProps[] = [
     description: "Rich and moist chocolate cake topped with creamy frosting.",
     price: 25,
     category: "Chocolate",
-    quantity:1
+    quantity:1,
+    isLiked: false,
+
   },
   {
     id:'2',
@@ -25,7 +28,9 @@ export const menuImages: MenuProps[] = [
     price: 45,
     image: "/images/chocolate-cake-OgXwrX5W.jpg",
     category: "Chocolate",
-    quantity:1
+    quantity:1,
+    isLiked: false,
+
   },
   {
     id:'3',
@@ -34,7 +39,9 @@ export const menuImages: MenuProps[] = [
     description: "Elegant vanilla cake perfect for weddings and special events.",
     price: 40,
     category: "Wedding",
-    quantity:1
+    quantity:1,
+    isLiked: false,
+
   },
   {
     id:'4',
@@ -43,7 +50,9 @@ export const menuImages: MenuProps[] = [
     description: "Classic red velvet cake with smooth cream cheese frosting.",
     price: 30,
     category: "Birthday",
-    quantity:1
+    quantity:1,
+    isLiked: false,
+
   },
   {
     id: "5",
@@ -52,7 +61,9 @@ export const menuImages: MenuProps[] = [
     price: 40,
     image: '/images/strawberry-cake.jpg',
     category: "fruit",
-    quantity:1
+    quantity:1,
+    isLiked: false,
+
   },
   
   
@@ -63,7 +74,9 @@ export const menuImages: MenuProps[] = [
     price: 25,
     image: '/images/cupcakes.jpg',
     category: "cupcakes",
-    quantity:1
+    quantity:1,
+    isLiked: false,
+
   },
   {
     id: "7",
@@ -72,6 +85,7 @@ export const menuImages: MenuProps[] = [
     price: 50,
     image: '/images/rainbow-cake.jpg',
     quantity:1,
-    category: "specialty"
+    category: "specialty",
+    isLiked: false,
   }
 ];
